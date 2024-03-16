@@ -5,23 +5,19 @@
 */
 
 const convertBtn = document.getElementById("convert-btn")
-const convertInput = document.getElementById("convert-input")
+const inputEl = document.getElementById("input-el")
 const convertMeterFeet = document.getElementById("convert-meter-feet")
 const convertLiterGallon = document.getElementById("convert-liter-gallon")
 const convertKilogramPound = document.getElementById("convert-kilogram-pound")
 
+const meterToFeet = 3.281
+const literToGallon = 0.264
+const kiloToPound = 2.204
+
 convertBtn.addEventListener("click", function() {
-    const input = Number(convertInput.value)
-    const meter = (input / 3.281).toFixed(3) 
-    const feet = (input * 3.281).toFixed(3)
-    const liter = (input / 0.264).toFixed(3)
-    const gallon = (input * 0.264).toFixed(3)
-    const kilogram = (input / 2.204).toFixed(3)
-    const pound = (input * 2.204).toFixed(3)
-convertMeterFeet.textContent = `${input} meters = ${feet} feet | ${input} feet = ${meter} meters`
-convertLiterGallon.textContent = `${input} liters = ${gallon} gallons | ${input} gallons = ${liter} liters`
-convertKilogramPound.textContent = `${input} kilos = ${pound} pounds | ${input} pounds = ${kilogram} kilos`
+    const baseValue = Number(inputEl.value)
 
-
-// console.log("convert clicked!!")
+    convertMeterFeet.textContent = `${baseValue} meters = ${(baseValue * meterToFeet).toFixed(3)} feet | ${baseValue} feet = ${(baseValue / meterToFeet).toFixed(3)} meters`
+    convertLiterGallon.textContent = `${baseValue} liters = ${(baseValue * literToGallon).toFixed(3)} gallons | ${baseValue} gallons = ${(baseValue / literToGallon).toFixed(3)} liters`
+    convertKilogramPound.textContent = `${baseValue} kilos = ${(baseValue * kiloToPound).toFixed(3)} pounds | ${baseValue} pounds = ${(baseValue / kiloToPound).toFixed(3)} kilos`
 })
